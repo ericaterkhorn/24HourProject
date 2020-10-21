@@ -23,6 +23,6 @@ namespace _24Hour.Data
     public class Reply : Comment
     {
         [Required]
-        public int CommentID { get; set; }
+        public int ReplyCommentID { get; set; }
     }
 }
