@@ -5,15 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _24Hour.Data
+namespace _24Hour.Models
 {
-    public class Post
+    public class PostCreate
     {
-        [Key]
-        public int PostID { get; set; }
         [Required]
-        public Guid UserID { get; set; }
-        [Display(Name = "Your Post")]
         public string Title { get; set; }
         [MaxLength(130, ErrorMessage = "You have exceeded the character limit")]
         public string Text { get; set; }
