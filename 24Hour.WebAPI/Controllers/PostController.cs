@@ -39,9 +39,5 @@ namespace _24Hour.WebAPI.Controllers
 
             return Ok();
         }
-
-
-
-
     }
 }

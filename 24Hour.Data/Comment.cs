@@ -12,7 +12,7 @@ namespace _24Hour.Data
         [Key]
         public int CommentID { get; set; }
         [Required]
-        public int UserID { get; set; }
+        public Guid UserID { get; set; }
         [Required]
         public int PostID { get; set; }
         [Required]
