@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -33,7 +34,11 @@ namespace _24Hour.Data
             return new ApplicationDbContext();
         }
 
+        
+        public DbSet<User> Users { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Like> Likes { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
