@@ -12,7 +12,7 @@ namespace _24Hour.Data
         [Key]
         public int PostID { get; set; }
         [Required]
-        public int AuthorID { get; set; }
+        public int UserID { get; set; }
         [Display(Name = "Your Post")]
         public string Title { get; set; }
         [MaxLength(130, ErrorMessage = "You have exceeded the character limit")]
