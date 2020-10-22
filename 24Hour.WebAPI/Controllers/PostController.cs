@@ -63,5 +63,15 @@ namespace _24Hour.WebAPI.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Delete(int id)
+        {
+            PostService postService = CreatePostService();
+
+            if (!postService.DeletePost(id))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }

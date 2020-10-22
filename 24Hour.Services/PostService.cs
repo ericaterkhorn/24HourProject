@@ -88,5 +88,20 @@ namespace _24Hour.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeletePost(int postID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.PostID == postID && e.UserID == _userID);
+
+                ctx.Posts.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
