@@ -11,6 +11,7 @@ namespace _24Hour.Models
     {
         [Required]
         public string Title { get; set; }
+
         [MaxLength(130, ErrorMessage = "You have exceeded the character limit")]
         public string Text { get; set; }
     }
