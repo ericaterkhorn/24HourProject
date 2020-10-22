@@ -20,6 +20,7 @@ namespace _24Hour.WebAPI.Controllers
             return postService;
         }
 
+        // Get All
         public IHttpActionResult Get()
         {
             PostService postService = CreatePostService();
@@ -27,6 +28,15 @@ namespace _24Hour.WebAPI.Controllers
             return Ok(posts);
         }
 
+        // Get Specific Post
+        public IHttpActionResult Get(int id)
+        {
+            PostService postService = CreatePostService();
+            var post = postService.GetPostByID(id);
+            return Ok(post);
+        }
+
+        // Create Post 
         public IHttpActionResult Post(PostCreate post)
         {
             if (!ModelState.IsValid)
@@ -35,6 +45,20 @@ namespace _24Hour.WebAPI.Controllers
             PostService postService = CreatePostService();
 
             if (!postService.CreatePost(post))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        // Update Post
+        public IHttpActionResult Put(PostEdit post)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            PostService postService = CreatePostService();
+
+            if (!postService.UpdatePost(post))
                 return InternalServerError();
 
             return Ok();

@@ -54,5 +54,39 @@ namespace _24Hour.Services
                 return query.ToArray();
             }
         }
+
+        public PostDetail GetPostByID(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.PostID == id && e.UserID == _userID);
+                return
+                    new PostDetail
+                    {
+                        PostID = entity.PostID,
+                        Title = entity.Title,
+                        Text = entity.Text
+                    };
+            }
+        }
+
+        public bool UpdatePost(PostEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.PostID == model.PostID && e.UserID == _userID);
+
+                entity.Title = model.Title;
+                entity.Text = model.Text;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
