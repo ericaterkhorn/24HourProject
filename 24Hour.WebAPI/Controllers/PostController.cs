@@ -13,6 +13,7 @@ namespace _24Hour.WebAPI.Controllers
     [Authorize]
     public class PostController : ApiController
     {
+        // Helper Function
         private PostService CreatePostService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
@@ -64,6 +65,7 @@ namespace _24Hour.WebAPI.Controllers
             return Ok();
         }
 
+        // Delete Post
         public IHttpActionResult Delete(int id)
         {
             PostService postService = CreatePostService();
