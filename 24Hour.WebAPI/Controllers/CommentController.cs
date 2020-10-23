@@ -20,21 +20,21 @@ namespace _24Hour.WebAPI.Controllers
             return commentService;
         }
 
-        [Route("{postID}")]
-        public IHttpActionResult Get([FromUri] int postID)
+        //[Route("{postID}")]
+        public IHttpActionResult Get(/*[FromUri] */int postID)
         {
             CommentService commentService = CreateCommentService();
             var comments = commentService.GetComments(postID);
             return Ok(comments);
         }
-        public IHttpActionResult Post(CommentCreate comment, [FromUri] int postID)
+        public IHttpActionResult Post(CommentCreate comment)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             CommentService commentService = CreateCommentService();
 
-            if (!commentService.CreateComment(comment, postID))
+            if (!commentService.CreateComment(comment))
                 return InternalServerError();
 
             return Ok();

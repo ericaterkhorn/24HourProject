@@ -16,9 +16,10 @@ namespace _24Hour.Data
         //[ForeignKey(nameof(User))]
         public Guid UserID { get; set; }
 
-        [ForeignKey(nameof(Post))]
+        //[ForeignKey(nameof(Post))]
+        [Required]
         public int PostID { get; set; }
-        public virtual Post Post { get; set; }
+        //public virtual Post Post { get; set; }
 
         [Required]
         [MaxLength(50, ErrorMessage = "You have exceeded the character limit")]

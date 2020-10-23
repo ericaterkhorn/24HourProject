@@ -12,6 +12,6 @@ namespace _24Hour.Models
         public int PostID { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
-        public List<Comment> Comments { get; set; }
+        public List<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

@@ -48,7 +48,7 @@ namespace _24Hour.Services
                             {
                                 PostID = e.PostID,
                                 Title = e.Title,
-                                Text = e.Text, 
+                                Text = e.Text,
                                 Comments = e.Comments
                             }
                             );

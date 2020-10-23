@@ -14,20 +14,19 @@ namespace _24Hour.Services
         private readonly Guid _userID;
         //private readonly int _postID;
 
-        public CommentService(Guid userID/*, int postID*/)
+        public CommentService(Guid userID)
         {
             _userID = userID;
             //_postID = postID;
         }
 
-        public bool CreateComment(CommentCreate model, int postID)
+        public bool CreateComment(CommentCreate model)
         {
             var entity =
                 new Comment()
                 {
                     UserID = _userID,
-                    //PostID = _postID,
-                    //PostID = postID,
+                    PostID = model.PostID,
                     CommentText = model.CommentText
                 };
 
@@ -46,7 +45,6 @@ namespace _24Hour.Services
                 var query =
                     ctx
                         .Comments
-                        //.Where(e => e.PostID == _postID)
                         .Where(e => e.PostID == postID)
                         .Select(
                             e =>
@@ -57,7 +55,7 @@ namespace _24Hour.Services
                                     CommentText = e.CommentText
                                 }
                         );
-                return query.ToArray();
+                return query.ToList();
             }
         }
     }
