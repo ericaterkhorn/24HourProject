@@ -32,8 +32,13 @@ namespace _24Hour.WebAPI.Controllers
         // Get Specific Post
         public IHttpActionResult Get(int id)
         {
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            CommentService commentService = new CommentService(userID);
+            var comments = commentService.GetComments(id).ToList();
+
             PostService postService = CreatePostService();
             var post = postService.GetPostByID(id);
+            post.Comments = comments;
             return Ok(post);
         }
 

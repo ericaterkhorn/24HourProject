@@ -66,5 +66,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\24Hour.Data\24Hour.Data.csproj">
+      <Project>{F1DFD219-2E54-4B37-A6C2-58267ADEB33B}</Project>
+      <Name>24Hour.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

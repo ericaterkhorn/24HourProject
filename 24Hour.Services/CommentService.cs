@@ -12,11 +12,12 @@ namespace _24Hour.Services
     public class CommentService
     {
         private readonly Guid _userID;
-        private readonly int postID;
+        //private readonly int _postID;
 
         public CommentService(Guid userID)
         {
             _userID = userID;
+            //_postID = postID;
         }
 
         public bool CreateComment(CommentCreate model)
@@ -25,7 +26,7 @@ namespace _24Hour.Services
                 new Comment()
                 {
                     UserID = _userID,
-                    PostID = postID,
+                    PostID = model.PostID,
                     CommentText = model.CommentText
                 };
 
@@ -37,7 +38,7 @@ namespace _24Hour.Services
 
         }
 
-        public IEnumerable<CommentListItem> GetComments()
+        public IEnumerable<CommentListItem> GetComments(int postID)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -54,7 +55,7 @@ namespace _24Hour.Services
                                     CommentText = e.CommentText
                                 }
                         );
-                return query.ToArray();
+                return query.ToList();
             }
         }
     }

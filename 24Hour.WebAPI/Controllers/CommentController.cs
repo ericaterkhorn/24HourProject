@@ -19,10 +19,12 @@ namespace _24Hour.WebAPI.Controllers
             var commentService = new CommentService(userID);
             return commentService;
         }
-        public IHttpActionResult Get()
+
+        //[Route("{postID}")]
+        public IHttpActionResult Get(/*[FromUri] */int postID)
         {
             CommentService commentService = CreateCommentService();
-            var comments = commentService.GetComments();
+            var comments = commentService.GetComments(postID);
             return Ok(comments);
         }
         public IHttpActionResult Post(CommentCreate comment)
@@ -30,9 +32,9 @@ namespace _24Hour.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateCommentService();
+            CommentService commentService = CreateCommentService();
 
-            if (!service.CreateComment(comment))
+            if (!commentService.CreateComment(comment))
                 return InternalServerError();
 
             return Ok();

@@ -12,9 +12,13 @@ namespace _24Hour.Data
     {
         [Key]
         public int LikeID { get; set; }
-        public string LikedPost { get; set; }
-        [ForeignKey(nameof(User))]
+
+        //[ForeignKey(nameof(Post))]
+        public int PostID { get; set; }
+        
+        //[ForeignKey(nameof(User))]
         public Guid UserID { get; set; }
+        
         public virtual User User { get; set; }        
     }
 }

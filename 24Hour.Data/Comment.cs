@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,10 +12,15 @@ namespace _24Hour.Data
     {
         [Key]
         public int CommentID { get; set; }
-        [Required]
+
+        //[ForeignKey(nameof(User))]
         public Guid UserID { get; set; }
+
+        //[ForeignKey(nameof(Post))]
         [Required]
         public int PostID { get; set; }
+        //public virtual Post Post { get; set; }
+
         [Required]
         [MaxLength(50, ErrorMessage = "You have exceeded the character limit")]
         public string CommentText { get; set; }
